@@ -1,0 +1,9 @@
+{
+    "name": "HotWax Commerce Loop NetSuite",
+    "short_name": "Loop NetSuite",
+    "theme_color": "#FFFFFF",
+    "icons": [],
+    "start_url": "./",
+    "display": "standalone",
+    "background_color": "#000000"
+}
