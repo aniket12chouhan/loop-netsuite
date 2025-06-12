@@ -16,6 +16,9 @@
   import { defineComponent } from 'vue';
 
   export default defineComponent({
-    components: { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle },
+    name: "Home",
+    components: { 
+      IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle 
+    },
   });
 </script>

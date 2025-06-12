@@ -17,4 +17,4 @@ Closes #
 ### Contribution and Currently Important Rules Acceptance
 <!-- Please get familiar with following info -->
 
-- [ ] I read and followed [contribution rules](https://github.com/hotwax/ionic-bopis#contribution-guideline)
+- [ ] I read and followed [contribution rules](https://github.com/hotwax/loop-netsuite#contribution-guideline)
