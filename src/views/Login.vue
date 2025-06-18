@@ -2,27 +2,29 @@
   <ion-page>
     <ion-content>
       <div class="flex">
+        <ion-card>
         <form class="login-container" @keyup.enter="login(form)" @submit.prevent="login(form)">
           <Logo />
-
+          
           <ion-item lines="full" v-if="!baseURL">
             <ion-input label-placement="fixed" :label="('OMS')" name="instanceUrl" v-model="instanceUrl" id="instanceUrl" type="text" required />
 
           </ion-item>
           <ion-item lines="full">
-            <ion-input label-placement="fixed" :label="('Username')" name="username" v-model="username" id="username" type="text" required />
-
+            <ion-input label-placement="fixed" :label="('Email')" name="username" v-model="username" id="email" type="text" required />
           </ion-item>
-          <ion-item lines="none">
+          <ion-item lines="full">
             <ion-input label-placement="fixed" :label="('Password')" name="password" v-model="password" id="password" type="password" required />
-
           </ion-item>
 
           <div class="ion-padding">
-            <ion-button type="submit" color="primary" fill="outline" expand="block">{{("Login") }}</ion-button>
+            <ion-button type="submit" color="primary"  expand="block">{{("Login") }}</ion-button>
+            <ion-button type="button" @click="navigate('/forgotPassword')" color="primary" fill="clear" expand="block">{{("Forgot Password?") }}</ion-button>
           </div>
         </form>
-      </div>
+         </ion-card>
+         <ion-button @click="navigate('/register')" color="dark" >{{("Register") }}</ion-button>
+       </div>
     </ion-content>
   </ion-page>
 </template>
@@ -33,7 +35,9 @@ import {
   IonContent,
   IonInput,
   IonItem,
-  IonPage 
+  IonPage,
+  
+  IonCard
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 import { useRouter } from "vue-router";
@@ -50,7 +54,9 @@ export default defineComponent({
     IonInput,
     IonItem,
     IonPage,
-    Logo
+    
+    Logo,
+    IonCard
   },
   data() {
     return {
@@ -78,13 +84,17 @@ export default defineComponent({
         if (data.api_key) {
           this.username = ''
           this.password = ''
-          this.router.push('/home')
+          this.router.push('/home');
         }
       }).catch((error: any) => {
-        showToast("Username or password is incorrect");
+        showToast(this.$t("Username or password is incorrect"));
       });
+    },
+    navigate: function (route: string) {
+      this.router.push({ path : route });
     }
   },
+  
   setup() {
     const router = useRouter();
     const store = useStore();
@@ -99,6 +109,7 @@ export default defineComponent({
 
 .flex {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;

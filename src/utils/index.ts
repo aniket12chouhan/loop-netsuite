@@ -1,30 +1,60 @@
 import { toastController } from '@ionic/vue';
+import { Plugins } from '@capacitor/core';
+import { translate } from '@hotwax/dxp-components';
 
-// TODO Use separate files for specific utilities
+const dateOrdinalSuffix = {
+  1: 'st',
+  21: 'st',
+  31: 'st',
+  2: 'nd',
+  22: 'nd',
+  3: 'rd',
+  23: 'rd'
+} as any
 
-// TODO Remove it when HC APIs are fully REST compliant
-const hasError = (response: any) => {
-  return !!response.data._ERROR_MESSAGE_ || !!response.data._ERROR_MESSAGE_LIST_;
-}
+const showToast = async (message: string, configButtons?: any) => {
+  const defaultButtons = [{
+    text: 'Dismiss',
+    role: 'cancel'
+  }]
 
-const showToast = async (message: string) => {
+  if (configButtons) defaultButtons.push(...configButtons);
+
   const toast = await toastController
     .create({
-      message,
+      message: message,
       duration: 3000,
-      position: 'top'
+      position: 'top',
+      buttons: defaultButtons
     })
   return toast.present();
 }
 
-const getFeature = (featureHierarchy: any, featureKey: string) => {
-  let  featureValue = ''
-  if (featureHierarchy) {
-    const feature = featureHierarchy.find((featureItem: any) => featureItem.startsWith(featureKey))
-    const featureSplit = feature ? feature.split('/') : [];
-    featureValue = featureSplit[2] ? featureSplit[2] : '';
-  }
-  return featureValue;
+
+const copyToClipboard = async (value: string, text?: string) => {
+  const { Clipboard } = Plugins;
+
+  await Clipboard.write({
+    string: value,
+  }).then(() => {
+    text ? showToast(translate(text)) : showToast(translate("Copied", { value }));
+  });
 }
 
-export { getFeature,  showToast, hasError}
+const isValidEmail = (email : string) => {
+  // Regular expression pattern for a valid email address
+  const emailPattern = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+  return emailPattern.test(email);
+}
+const isValidPassword = (password : string) => {
+  // Regular expression pattern for a valid password
+  const passwordPattern = /^.*(?=.{5,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).*$/;
+  return passwordPattern.test(password);
+}
+
+const generateInternalId = (name: string) => {
+  return name.trim().toUpperCase().split(' ').join('_');
+}
+
+
+export { copyToClipboard, showToast, generateInternalId, isValidEmail, isValidPassword }
