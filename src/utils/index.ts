@@ -30,7 +30,6 @@ const showToast = async (message: string, configButtons?: any) => {
   return toast.present();
 }
 
-
 const copyToClipboard = async (value: string, text?: string) => {
   const { Clipboard } = Plugins;
 
