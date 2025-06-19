@@ -7,18 +7,18 @@
           <Logo />
           
           <ion-item lines="full" v-if="!baseURL">
-            <ion-input label-placement="fixed" :label="('OMS')" name="instanceUrl" v-model="instanceUrl" id="instanceUrl" type="text" required />
+            <ion-input label-placement="fixed" :label="($t('OMS'))" name="instanceUrl" v-model="instanceUrl" id="instanceUrl" type="text" required />
 
           </ion-item>
           <ion-item lines="full">
-            <ion-input label-placement="fixed" :label="('Email')" name="username" v-model="username" id="email" type="text" required />
+            <ion-input label-placement="fixed" :label="($t('Email'))" name="username" v-model="username" id="email" type="text" required />
           </ion-item>
           <ion-item lines="full">
-            <ion-input label-placement="fixed" :label="('Password')" name="password" v-model="password" id="password" type="password" required />
+            <ion-input label-placement="fixed" :label="($t('Password'))" name="password" v-model="password" id="password" type="password" required />
           </ion-item>
 
           <div class="ion-padding">
-            <ion-button type="submit" color="primary"  expand="block">{{("Login") }}</ion-button>
+            <ion-button type="submit" color="primary"  expand="block">{{$t("Login") }}</ion-button>
             <ion-button type="button" @click="navigate('/forgotPassword')" color="primary" fill="clear" expand="block">{{("Forgot Password?") }}</ion-button>
           </div>
         </form>

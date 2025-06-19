@@ -1,5 +1,9 @@
-{
+{ 
+    "Login": "Login",
+    "OMS": "OMS",
     "Create User": "Create User",
+    "username or password is incorrect": "Username or password is incorrect",
+    "Something went wrong": "Something went wrong",
     "Create User Your Account": "Create User Your Account",
     "Username": "Username",
     "Full name": "Full name",
