@@ -5,6 +5,7 @@ import forgetPassword from '@/views/forgetPassword.vue';
 import Login from '@/views/Login.vue'
 import store from '@/store'
 import Home from '@/views/Home.vue';
+import UserDetailPage from '@/views/UserDetailPage.vue';
 
 
 const authGuard = (to: any, from: any, next: any) => {
@@ -26,13 +27,12 @@ const loginGuard = (to: any, from: any, next: any) => {
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/home'
+    redirect: '/user-detail'
   },
   {
-    path: '/home',
-    name: 'Home',
-    component: Home,
-    beforeEnter: authGuard
+    path: '/user-detail',
+    name: 'UserDetail',
+    component: UserDetailPage,
   },
   {
     path: '/login',
