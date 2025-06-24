@@ -29,7 +29,7 @@
             </ion-item>
 
             <div class="ion-padding">
-              <ion-button type="submit" expand="block">{{ $t("register") }}</ion-button>
+              <ion-button type="submit" expand="block">{{ $t("Register") }}</ion-button>
               <ion-button @click="navigate('/login')" fill="clear" expand="block">{{ $t("Back to Login") }}</ion-button>
             </div>
           </form>
@@ -89,19 +89,19 @@ export default defineComponent({
     validateCreateUserDetail(registerData: any) {
       const validationErrors = [];
       if(!registerData.fullName) {
-        validationErrors.push(('Name is required.'));
+        validationErrors.push(this.$t('Name is required.'));
       }
       if(!registerData.emailAddress) {
-        validationErrors.push(('Email address is required.'));
+        validationErrors.push(this.$t('Email address is required.'));
       }
       if(registerData.emailAddress && !isValidEmail(registerData.emailAddress)) {
-        validationErrors.push(('Invalid email address.'));
+        validationErrors.push(this.$t('Invalid email address.'));
       }
       if(registerData.password && !isValidPassword(registerData.password)) {
-        validationErrors.push(('Password is not valid'));
+        validationErrors.push(this.$t('Password is not valid'));
       }
       if(registerData.password && registerData.confirmPassword && registerData.password !== registerData.confirmPassword) {
-        validationErrors.push(('Password is not matching with confirm password.'));
+        validationErrors.push(this.$t('Password is not matching with confirm password.'));
       }
       return validationErrors;
     },
@@ -118,16 +118,9 @@ export default defineComponent({
           ...this.registerData,
 
         }
-        // const resp = await UserService.createUser(payload);
-        // if (resp.status === 200 && !hasError(resp) && resp.data.partyId) {
-        //   const partyId = resp.data.partyId;
-        //   showToast($t("User created successfully"));
-        //   this.$router.replace({ path: `/user-confirmation/${partyId}` })
-        // } else {
-        //   throw resp.data;
-        // }
+
       } catch (err: any) {
-        let errorMessage = ('Failed to create user.');
+        let errorMessage = (this.$t('Failed to create user.'));
         if(err?.response?.data?.error?.message) {
           errorMessage = err.response.data.error.message
         }
@@ -137,7 +130,7 @@ export default defineComponent({
     },
     register(form: any) {
       if(this.registerData.password !== this.registerData.ConfirmPassword) {
-        showToast("Passwords do not match");
+        showToast(this.$t("Passwords do not match"));
         return;
       }
     },

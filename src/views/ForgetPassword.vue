@@ -15,7 +15,7 @@
                 type="email"></ion-input>
             </ion-item>
             <div class="ion-padding">
-              <ion-button type="submit" color="primary" expand="block">{{ $t("forgetPassword") }}</ion-button>
+              <ion-button type="submit" color="primary" expand="block">{{ $t("Send Link") }}</ion-button>
               <ion-button @click="navigate('/login')" fill="clear" expand="block">{{ $t("Back to Login") }}</ion-button>
             </div>
           </form>
@@ -74,10 +74,10 @@ export default defineComponent({
     validateCreateUserDetail(forgetPasswordData: any) {
       const validationErrors = [];
       if(!forgetPasswordData.emailAddress) {
-        validationErrors.push(('Email address is required.'));
+        validationErrors.push(this.$t('Email address is required.'));
       }
       if(forgetPasswordData.emailAddress && !isValidEmail(forgetPasswordData.emailAddress)) {
-        validationErrors.push(('Invalid email address.'));
+        validationErrors.push(this.$t('Invalid email address.'));
       }
       return validationErrors;
     },
@@ -95,7 +95,7 @@ export default defineComponent({
 
         }
       } catch (err: any) {
-        let errorMessage = ('Failed to create user.');
+        let errorMessage = (this.$t('Failed to create user.'));
         if (err?.response?.data?.error?.message) {
           errorMessage = err.response.data.error.message
         }
