@@ -17,7 +17,7 @@
 
           <div class="ion-padding">
             <ion-button type="submit" color="primary"  expand="block">{{$t("Login") }}</ion-button>
-            <ion-button type="button" @click="navigate('/forgotPassword')" color="primary" fill="clear" expand="block">{{$t("Forgot Password?") }}</ion-button>
+            <ion-button type="button" @click="navigate('/forgetPassword')" color="primary" fill="clear" expand="block">{{$t("Forget Password?") }}</ion-button>
           </div>
         </form>
          </ion-card>

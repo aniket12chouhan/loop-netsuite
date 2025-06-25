@@ -46,8 +46,8 @@ const routes: Array<RouteRecordRaw> = [
     component: Register
   },
   {
-    path: '/forgotPassword',
-    name: 'ForgotPassword',
+    path: '/forgetPassword',
+    name: 'ForgetPassword',
     component: ForgetPassword
   },
 ]
