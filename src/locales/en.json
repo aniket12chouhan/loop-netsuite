@@ -25,5 +25,6 @@
   "Password is not valid.": "Password is not valid.",
   "Password is not matching with confirm password.": "Password is not matching with confirm password.",
   "Failed to create user.": "Failed to create user.",
-  "Passwords do not match.": "Passwords do not match."
+  "Passwords do not match.": "Passwords do not match.",
+  "Forget Password?": "Forget Password?"
 }
